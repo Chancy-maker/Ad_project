@@ -1,0 +1,33 @@
+# Module B — Under-delivery Prediction
+random_seed: 42
+
+generator:
+  n_campaigns: 3000
+  start_date: "2026-01-01"
+  # Échelle de volume quotidien d'inventaire (hypothèse de simulation)
+  median_daily_inventory: 60000
+  # Tolérance métier : sous-livraison si livré < tolerance * réservé
+  tolerance: 0.98
+
+snapshots: [0.25, 0.50, 0.75]
+
+split:
+  val_frac: 0.15
+  test_frac: 0.15
+
+# Lot de campagnes généré séparément (autre graine) pour une validation hors échantillon
+holdout:
+  n_campaigns: 1000
+  seed_offset: 1000
+
+models: [dummy, pacing_rule, logistic_regression, random_forest, hist_gb, lightgbm]
+hyperparameter_search: true
+
+threshold:
+  strategy: recall_target   # recall_target | f1
+  recall_target: 0.80
+
+# Classes de risque (sur la probabilité)
+risk_bins:
+  low_max: 0.35
+  high_min: 0.65

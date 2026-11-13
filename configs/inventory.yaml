@@ -1,0 +1,28 @@
+# Module A — Inventory Forecasting
+random_seed: 42
+
+# Fichiers Internos déjà normalisés (train/validation/test) : valeur max d'origine de `Requests` si connue
+# (laisser null = déduction automatique si possible, sinon cible laissée en unités relatives 0–1)
+internos_target_max_requests: null
+
+# Substitut synthétique d'Internos, utilisé UNIQUEMENT si data/raw/internos.csv est absent
+proxy:
+  n_media: 900
+  start: "2016-01-01"
+  end: "2018-06-30"
+
+# HYPOTHÈSES DE SIMULATION (jamais des paramètres réels de TF1+)
+conversion:
+  ad_opportunities_per_view: 2.0
+  eligibility_rate: 0.85
+
+split:
+  val_frac: 0.15
+  test_frac: 0.15
+
+models: [naive, ridge, random_forest, hist_gb, lightgbm]
+intervals:
+  low: 0.10
+  high: 0.90
+hyperparameter_search: true
+importance_sample: 4000

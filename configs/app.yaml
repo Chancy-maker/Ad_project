@@ -1,0 +1,7 @@
+# Configuration générale
+random_seed: 42
+datasets:
+  # Fichiers attendus dans data/raw/ (voir README, section « Données réelles »)
+  internos_file: internos.csv
+  criteo_file: criteo_attribution_dataset.tsv.gz
+  ytlive_viewers_file: viewers.csv   # facultatif, non utilisé par défaut

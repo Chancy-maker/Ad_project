@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+# Données volumineuses et modèles : jamais committés
+data/raw/*
+data/interim/*
+data/processed/*
+data/synthetic/*
+models/inventory/*
+models/under_delivery/*
+reports/metrics/*
+reports/figures/*
+!**/.gitkeep
